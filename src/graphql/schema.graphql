@@ -1,0 +1,131 @@
+scalar Upload
+
+type Query {
+  getUsers: [User]
+  getServerData: serverData
+  getUser(token: String!): User
+  getCompany(ownerId: ID!): publicShop
+  getCompanies: [Company]
+  getProduct(id: ID): Product
+  getCompanyProducts(companyId: ID!): [Product]
+  getPublicShop(nick: String!): publicShop
+}
+
+type Mutation {
+  userLogin(email: String!, password: String!): authJWT
+  createUser(input: userInput): User
+  updateUser(_id: ID, input: userInput): User
+  deleteUser(_id: ID): messageResponse
+  createCompany(input: companyInput): Company
+  updateCompany(_id: ID, input: companyInput): Company
+  deleteCompany(_id: ID): messageResponse
+  createProduct(input: productInput): Product
+  updateProduct(_id: ID, input: productInput): Product
+  deleteProduct(_id: ID): messageResponse
+}
+
+input companyInput {
+  nick: String
+  name: String
+  location: String
+  description: String
+  ownerId: ID
+  active: Boolean
+  schedule: String
+  maxProductActive: Int
+  planPayDate: String
+}
+
+input userInput {
+  _id: ID
+  nick: String
+  name: String
+  lastname: String
+  dateBirth: String
+  email: String
+  password: String
+  createdAt: String
+  role: String
+  maxCompany: Int
+  lastLogin: String
+  balance: Float
+  banned: Boolean
+}
+
+input productInput {
+  title: String
+  description: String
+  imageURL: String
+  public_ID: String
+  companyId: ID
+  stock: Int
+  price: Float
+  active: Boolean
+  createdAt: String
+  publishAds: Int
+}
+
+type authJWT {
+  token: String
+  message: String
+}
+
+type publicShop {
+  products: [Product]
+  company: Company
+}
+
+type serverData {
+  users: [User]
+  companies: [Company]
+}
+
+type User {
+  _id: ID
+  nick: String
+  name: String
+  lastname: String
+  dateBirth: String
+  email: String
+  password: String
+  createdAt: String
+  role: String
+  maxCompany: Int
+  lastLogin: String
+  balance: Float
+  banned: Boolean
+}
+
+type messageResponse {
+  message: String
+}
+
+type Company {
+  _id: ID
+  nick: String
+  name: String
+  location: String
+  description: String
+  ownerId: ID
+  active: Boolean
+  schedule: String
+  plan: String
+  maxProductActive: Int
+  createdAt: String
+  planPayDate: String
+  expiredPlanDate: String
+}
+
+type Product {
+  _id: ID
+  title: String
+  description: String
+  imageURL: String
+  public_ID: String
+  companyId: ID
+  stock: Int
+  price: Float
+  active: Boolean
+  createdAt: String
+  publishAds: Int
+}
