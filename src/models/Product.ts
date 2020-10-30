@@ -8,24 +8,27 @@ const publishPlan = {
   message: "{VALUE} no es un plan valido",
 };
 
-const productSchema = new Schema({
-  title: String,
-  description: String,
-  imageURL: String,
-  public_id: { type: String },
-  companyId: { type: ObjectId, required: true },
-  stock: { type: Number, default: 0 },
-  price: { type: Number, default: 0 },
-  active: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now },
-  plan: {
-    type: String,
-    default: "Free",
-    required: [true],
-    enum: publishPlan,
+const productSchema = new Schema(
+  {
+    title: String,
+    description: String,
+    imageURL: { type: String, trim: true },
+    public_id: { type: String },
+    companyId: { type: ObjectId, required: true },
+    stock: { type: Number, default: 0 },
+    price: { type: Number, default: 0 },
+    active: { type: Boolean, default: false },
+    createdAt: { type: Date, default: Date.now },
+    plan: {
+      type: String,
+      default: "Free",
+      required: [true],
+      enum: publishPlan,
+    },
+    publishAds: { type: Number, default: 1000 },
   },
-  publishAds: { type: Number, default: 1000 },
-});
+  { versionKey: false, timestamps: true }
+);
 
 productSchema.plugin(uniqueValidator, {
   message: "El {PATH} debe de ser unico",
