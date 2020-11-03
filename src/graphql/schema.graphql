@@ -29,7 +29,8 @@ input companyInput {
   location: String
   description: String
   ownerId: ID
-  coords: Coords
+  latitude: Float
+  longitud: Float
   active: Boolean
   schedule: String
   maxProductActive: Int
@@ -57,7 +58,8 @@ input productInput {
   description: String
   imageURL: String
   public_ID: String
-  coords: Coords
+  latitude: Float
+  longitud: Float
   companyId: ID
   stock: Int
   price: Float
