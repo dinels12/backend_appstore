@@ -19,6 +19,10 @@ const productSchema = new Schema(
     price: { type: Number, default: 0 },
     active: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now },
+    coords: {
+      longitud: String,
+      latitude: String,
+    },
     plan: {
       type: String,
       default: "Free",

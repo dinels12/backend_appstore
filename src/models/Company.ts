@@ -18,6 +18,10 @@ const companySchema = new Schema(
       unique: true,
     },
     location: { type: String, required: [true, "La ubicacion es necesaria"] },
+    coords: {
+      longitud: { type: Number },
+      latitude: { type: Number },
+    },
     description: { type: String },
     ownerId: { type: ObjectId, required: true, unique: true },
     active: { type: Boolean, default: false },
