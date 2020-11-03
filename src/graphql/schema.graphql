@@ -1,5 +1,3 @@
-scalar Upload
-
 type Query {
   getUsers: [User]
   getServerData: serverData
@@ -8,6 +6,7 @@ type Query {
   getCompanies: [Company]
   getProduct(id: ID): Product
   getCompanyProducts(companyId: ID!): [Product]
+  getProducts: [Product]
   getPublicShop(nick: String!): publicShop
 }
 

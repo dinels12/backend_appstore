@@ -45,10 +45,9 @@ const Query = {
     return { company, products };
   },
   getCompanies: async () => await Company.find(),
-
+  getProducts: async () => await Product.find({ active: true }),
   getPublicShop: async (_: any, { nick }: any) => {
-    // @ts-ignore
-    const company: CompanyInterface = await Company.findOne({
+    const company: any = await Company.findOne({
       nick,
       active: true,
     });
