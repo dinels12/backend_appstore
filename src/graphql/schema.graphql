@@ -38,7 +38,7 @@ input companyInput {
 
 input CoordsInput {
   latitude: Float
-  longitud: Float
+  longitude: Float
 }
 
 input userInput {
@@ -140,6 +140,6 @@ type Product {
 }
 
 type Coords {
-  longitud: Float
   latitude: Float
+  longitude: Float
 }
