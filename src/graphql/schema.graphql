@@ -29,12 +29,16 @@ input companyInput {
   location: String
   description: String
   ownerId: ID
-  latitude: Float
-  longitud: Float
+  coords: CoordsInput
   active: Boolean
   schedule: String
   maxProductActive: Int
   planPayDate: String
+}
+
+input CoordsInput {
+  latitude: Float
+  longitud: Float
 }
 
 input userInput {
